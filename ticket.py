@@ -1,10 +1,12 @@
+import os
 from telegram import Update, InlineKeyboardMarkup, InlineKeyboardButton
 from telegram.ext import Application, CommandHandler, CallbackQueryHandler, CallbackContext
 import random
 
-# Fixed Owner and Admin User IDs
-OWNER_ID = 1351184742  # Replace with your Telegram User ID
-ADMIN_ID = 6037699129  # Replace with your Admin's Telegram User ID
+# Fetch sensitive data from environment variables
+BOT_TOKEN = os.getenv("7125867291:AAH0E-hN5tAwGgVPpGqhfpxg3mYBGT41dDY")  # Replace 'BOT_TOKEN' with your actual environment variable name
+OWNER_ID = int(os.getenv("1351184742"))  # Fetch Owner ID from environment
+ADMIN_ID = int(os.getenv(" 6037699129"))  # Fetch Admin ID from environment
 
 # Define a dictionary to store user tickets
 user_tickets = {}
@@ -83,12 +85,10 @@ async def approve_ticket(update: Update, context: CallbackContext):
 
             await context.bot.send_message(
                 chat_id=approve_user_id,
-                text=(
-                    f"\U0001F389 Congratulations! \U0001F389\n"
-                    f"Your ticket has been approved. \U0001F3C6\n"
-                    f"Here is your ticket number: {ticket_number}\n\n"
-                    "Best of luck for the draw! \U0001F3C6"
-                ),
+                text=(f"\U0001F389 Congratulations! \U0001F389\n"
+                      f"Your ticket has been approved. \U0001F3C6\n"
+                      f"Here is your ticket number: {ticket_number}\n\n"
+                      "Best of luck for the draw! \U0001F3C6")
             )
             await update.message.reply_text(
                 f"User {approve_user_id} has been successfully approved with ticket {ticket_number}."
@@ -117,21 +117,17 @@ async def conduct_draw(context: CallbackContext):
         if user_id == winner_id:
             await context.bot.send_message(
                 chat_id=user_id,
-                text=(
-                     f"\U0001F3C6 The draw is complete! \U0001F3C6\n\n"
-                    f"\U0001F389 Congratulations to {winner_name} \U0001F389\n"
-                    f"Ticket Number: {winner_ticket}\n\n"
-                    f"They have won the grand prize of {PRIZE_AMOUNT}! \U0001F911\n\n"
-                    "Thank you for participating. Stay tuned for the next round!"
-                ),
+                text=(f"\U0001F3C6 The draw is complete! \U0001F3C6\n\n"
+                      f"\U0001F389 Congratulations to {winner_name} \U0001F389\n"
+                      f"Ticket Number: {winner_ticket}\n\n"
+                      f"They have won the grand prize of {PRIZE_AMOUNT}! \U0001F911\n\n"
+                      "Thank you for participating. Stay tuned for the next round!")
             )
         else:
             await context.bot.send_message(
                 chat_id=user_id,
-                text=(
-                    "\U000026A0 Unfortunately, you didn't win this round.\n"
-                    "But don't worry, you can buy another ticket for the next round! \U0001F4B8"
-                ),
+                text=("\U000026A0 Unfortunately, you didn't win this round.\n"
+                      "But don't worry, you can buy another ticket for the next round! \U0001F4B8")
             )
 
     # Reset everything after the draw
@@ -182,8 +178,8 @@ async def broadcast(update: Update, context: CallbackContext):
 
 # Set up the bot
 def main():
-    # Replace 'YOUR_TOKEN' with your bot's token
-    application = Application.builder().token("7125867291:AAH0E-hN5tAwGgVPpGqhfpxg3mYBGT41dDY").build()
+    # Fetch token from environment variable
+    application = Application.builder().token(BOT_TOKEN).build()
 
     application.add_handler(CommandHandler("start", start))
     application.add_handler(CallbackQueryHandler(handle_buy_ticket, pattern="^buy_ticket$"))
