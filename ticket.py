@@ -4,9 +4,9 @@ from telegram.ext import Application, CommandHandler, CallbackQueryHandler, Call
 import random
 
 # Fetch sensitive data from environment variables
-BOT_TOKEN = os.getenv("7125867291:AAH0E-hN5tAwGgVPpGqhfpxg3mYBGT41dDY")  # Replace 'BOT_TOKEN' with your actual environment variable name
-OWNER_ID = int(os.getenv("1351184742"))  # Fetch Owner ID from environment
-ADMIN_ID = int(os.getenv(" 6037699129"))  # Fetch Admin ID from environment
+BOT_TOKEN = os.getenv("BOT_TOKEN")  # Fetch bot token from environment
+OWNER_ID = int(os.getenv("OWNER_ID"))  # Fetch Owner ID from environment
+ADMIN_ID = int(os.getenv("ADMIN_ID"))  # Fetch Admin ID from environment
 
 # Define a dictionary to store user tickets
 user_tickets = {}
