@@ -1,6 +1,5 @@
-import telebot
-from telebot.types import InlineKeyboardMarkup, InlineKeyboardButton
-from telebot.ext import Application, CommandHandler, CallbackQueryHandler, CallbackContext
+from telegram import Update, InlineKeyboardMarkup, InlineKeyboardButton
+from telegram.ext import Application, CommandHandler, CallbackQueryHandler, CallbackContext
 import random
 
 # Fixed Owner and Admin User IDs
