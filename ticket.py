@@ -1,4 +1,3 @@
-import telebot
 from telebot import Update, InlineKeyboardMarkup, InlineKeyboardButton
 from telebot.ext import Application, CommandHandler, CallbackQueryHandler, CallbackContext
 import random
