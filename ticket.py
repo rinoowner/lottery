@@ -1,4 +1,5 @@
-from telebot import Update, InlineKeyboardMarkup, InlineKeyboardButton
+import telebot
+from telebot.types import InlineKeyboardMarkup, InlineKeyboardButton
 from telebot.ext import Application, CommandHandler, CallbackQueryHandler, CallbackContext
 import random
 
