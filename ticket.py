@@ -1,3 +1,4 @@
+import telebot
 from telegram import Update, InlineKeyboardMarkup, InlineKeyboardButton
 from telegram.ext import Application, CommandHandler, CallbackQueryHandler, CallbackContext
 import random
